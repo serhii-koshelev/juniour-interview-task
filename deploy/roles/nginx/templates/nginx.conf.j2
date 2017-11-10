@@ -1,0 +1,27 @@
+user www-data;
+worker_processes 4;
+worker_rlimit_nofile 100000;
+pid /run/nginx.pid;
+events {
+	worker_connections 768;
+}
+http {
+    include       /etc/nginx/mime.types;
+    default_type  application/octet-stream;
+
+    server_names_hash_bucket_size 64;
+
+    access_log off;
+    error_log /var/log/nginx/error.log;
+
+    keepalive_timeout  65;
+
+    reset_timedout_connection on;
+    types_hash_max_size 2048;
+    include /etc/nginx/sites-enabled/*;
+
+    gzip on;
+    gzip_min_length 256;
+    gzip_comp_level 3;
+    gzip_types text/plain text/css application/json application/x-javascript text/xml application/xml application/xml+rss text/javascript;
+}

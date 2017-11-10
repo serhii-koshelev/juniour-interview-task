@@ -1,0 +1,14 @@
+---
+- hosts: brander
+  remote_user: "{{ remote_user }}"
+  become: yes
+  become_user: root
+  roles:
+    - { role: common }
+    - { role: mysql }
+    - { role: nginx }
+    - { role: php-fpm }
+    - { role: composer }
+    - { role: symfony }
+  vars_files:
+    - vars/all.yml

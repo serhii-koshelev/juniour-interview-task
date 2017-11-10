@@ -1,0 +1,5 @@
+[brander]
+brander.loc ansible_connection=local
+
+[brander:vars]
+remote_user=vagrant

@@ -1,0 +1,5 @@
+---
+# tasks file for symfony2
+- composer:
+    command: install
+    working_dir: /var/www

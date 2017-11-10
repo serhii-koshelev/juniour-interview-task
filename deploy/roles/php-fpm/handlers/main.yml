@@ -1,0 +1,4 @@
+---
+- name: reload php7.1-fpm
+  sudo: yes
+  service: name=php7.1-fpm state=reloaded

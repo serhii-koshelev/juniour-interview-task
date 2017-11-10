@@ -1,0 +1,10 @@
+---
+# The hostname of the server that is going to run the ELK stack
+server_name: brander.loc
+nginx_port: 80
+ip: 192.168.1.128
+
+mysql_host: localhost
+mysql_root_pass: passwd
+
+database_name: test_task

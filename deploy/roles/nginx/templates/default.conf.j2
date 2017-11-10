@@ -1,0 +1,20 @@
+server {
+    listen 80;
+
+    server_name {{ server_name }};
+    root /var/www/web;
+    index app.php;
+
+    location / {
+            try_files $uri /app.php?$query_string;
+    }
+
+    # serve standard php files
+    location ~ \.php(/|$) {
+            fastcgi_pass unix:/var/run/php/php7.1-fpm.sock;
+            fastcgi_split_path_info ^(.+?\.php)(/.*)$;
+            include fastcgi_params;
+            fastcgi_param SCRIPT_FILENAME $realpath_root$fastcgi_script_name;
+            fastcgi_param  HTTPS off;
+    }
+}

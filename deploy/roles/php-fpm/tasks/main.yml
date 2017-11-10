@@ -1,0 +1,43 @@
+---
+- name: add php ppa
+  sudo: yes
+  action: apt_repository repo=ppa:ondrej/php state=present
+
+- name: install php packages
+  action: apt pkg={{item}} state=installed
+  sudo: yes
+  with_items:
+    - php-pear
+    - php7.1-fpm
+    - php7.1-cli
+    - php7.1-dev
+    - php7.1-gd
+    - php7.1-curl
+    - php7.1-json
+    - php7.1-mcrypt
+    - php7.1-mbstring
+    - php7.1-sqlite3
+    - php7.1-mysql
+    - php-redis
+    - php7.1-intl
+    - php7.1-tidy
+    - php7.1-imap
+    - php7.1-xml
+    - php7.1-bcmath
+
+- name: Restart php-fpm
+  sudo: yes
+  action: service name=php7.1-fpm state=restarted
+
+- name: php7.1-fpm | configure php.ini
+  lineinfile: dest=/etc/php/7.1/fpm/php.ini regexp="{{ item.regexp }}" line="{{ item.line }}" backup=yes
+  sudo: yes
+  with_items:
+    - { regexp: "memory_limit =", line: "memory_limit = 128M" }
+
+- name: php7.1-fpm | configure www.conf
+  lineinfile: dest=/etc/php/7.1/fpm/pool.d/www.conf regexp="{{ item.regexp }}" line="{{ item.line }}" backup=yes
+  sudo: yes
+  with_items:
+    - { regexp: "pm.start_servers =", line: ";pm.start_servers =" }
+    - { regexp: "chdir =", line: "chdir = /" }

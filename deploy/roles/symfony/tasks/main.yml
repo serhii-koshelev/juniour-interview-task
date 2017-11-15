@@ -1,5 +1,10 @@
 ---
-# tasks file for symfony2
-- composer:
-    command: install
-    working_dir: /var/www
+- name: Changing perm of "/var/www/update.sh", adding "+x"
+  file: dest=/var/www/update.sh mode=a+x
+
+- command: ./update.sh
+  args:
+    chdir: /var/www/
+  register: hello
+
+- debug: msg="{{ hello.stdout }}"

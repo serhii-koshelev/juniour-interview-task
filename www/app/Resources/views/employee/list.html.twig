@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+{% block title %}Employees list{% endblock %}
+{% block body %}
+    <ul class="employees">
+    {% for employee in employees %}
+        <li class="employee">
+            <h3 class="employee-name">{{ employee.name }}</h3>
+            <div class="employee-info">
+                <span class="position">{{ employee.position }}</span>
+                <img src="{{ asset('img/"{{ employee.avatar }}"') }}" alt="">
+                <span class="rate">{{ employee.rate }}</span>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
+{% endblock %}

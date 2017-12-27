@@ -11,7 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 class EmployeesListController extends Controller
 {
     /**
-     * @Route("/employees")
+     * @Route("/employees" ,name="employees")
      */
     public function renderEmployeesList()
     {

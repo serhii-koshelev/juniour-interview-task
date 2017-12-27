@@ -1,5 +1,6 @@
 {% extends 'base.html.twig' %}
 {% block title %}Employees list{% endblock %}
+{% block nav %}{{ parent() }}{% endblock %}
 {% block body %}
     <ul class="employees">
     {% for employee in employees %}

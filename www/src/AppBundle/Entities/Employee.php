@@ -34,11 +34,11 @@ class Employee
     /**
      * @ORM\Column(type="date")
      */
-    private $firstday;
+    private $firstDay;
     /**
      * @ORM\Column(type="string" , nullable=true)
      */
-    private $avatar;
+    private $avatarFileName;
 
     /**
      * @ORM\Column(type="string")
@@ -96,33 +96,33 @@ class Employee
     /**
      * @return mixed
      */
-    public function getFirstday()
+    public function getFirstDay()
     {
-        return $this->firstday;
+        return $this->firstDay;
     }
 
     /**
-     * @param mixed $firstday
+     * @param mixed $firstDay
      */
-    public function setFirstday($firstday)
+    public function setFirstDay($firstDay)
     {
-        $this->firstday = new \DateTime($firstday);
+        $this->firstDay = new \DateTime($firstDay);
     }
 
     /**
      * @return mixed
      */
-    public function getAvatar()
+    public function getAvatarFileName()
     {
-        return $this->avatar;
+        return $this->avatarFileName;
     }
 
     /**
-     * @param mixed $avatar
+     * @param mixed $avatarFileName
      */
-    public function setAvatar($avatar = null)
+    public function setAvatarFileName($avatarFileName = null)
     {
-        $this->avatar = $avatar;
+        $this->avatarFileName = $avatarFileName;
     }
 
     /**

@@ -18,16 +18,16 @@ class EmployeeEntityController extends Controller
         $employee->setName("Firstname");
         $employee->setSurname("Secondname");
         $employee->setRate(5);
-        $employee->setFirstday("2017-12-29");
+        $employee->setFirstDay("2017-12-29");
         $employee->setPosition("team lead");
-        $employee->setAvatar("ava.jpg");
+        $employee->setAvatarFileName("ava.jpg");
 
         $em = $this->getDoctrine()->getManager();
         $em->persist($employee);
         $em->flush();
 
         return new Response("Employee with name". $employee->getName(). " ". $employee->getSurname() . " and rate" . $employee->getRate() .
-        " will work from " . date_format($employee->getFirstday(), 'd-n-y') . " day!");
+        " will work from " . date_format($employee->getFirstDay(), 'd-n-y') . " day!");
     }
 
     /**

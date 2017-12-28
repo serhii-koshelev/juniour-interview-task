@@ -20,28 +20,28 @@ class Employee
     private $id;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", name="name")
      */
     private $name;
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", name="surname")
      */
     private $surname;
     /**
-     * @ORM\Column(type="decimal")
+     * @ORM\Column(type="decimal", name="rate")
      */
     private $rate;
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="date", name="firstDay")
      */
     private $firstDay;
     /**
-     * @ORM\Column(type="string" , nullable=true)
+     * @ORM\Column(type="string" , nullable=true, name="avatarFileName")
      */
     private $avatarFileName;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="string", name="position")
      */
     private $position;
 
@@ -104,9 +104,9 @@ class Employee
     /**
      * @param mixed $firstDay
      */
-    public function setFirstDay($firstDay)
+    public function setFirstDay(\DateTime $firstDay = null)
     {
-        $this->firstDay = new \DateTime($firstDay);
+        $this->firstDay = $firstDay;
     }
 
     /**

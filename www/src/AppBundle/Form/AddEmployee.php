@@ -9,9 +9,13 @@
 namespace AppBundle\Form;
 
 
+use AppBundle\Entities\Employee;
+use Doctrine\DBAL\Types\DateType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Validator\Constraints\DateTime;
 
 class AddEmployee extends AbstractType
 {
@@ -21,11 +25,17 @@ class AddEmployee extends AbstractType
             ->add('surname')
             ->add('position')
             ->add('rate')
-            ->add('firstWorkingDay')
-            ->add('avatarFileName');
+            ->add('firstDay')
+            ->getForm()//, DateType::class, [
+            //'widget' => 'single_text'
+        //])
+            ->add('avatarFileName');//FileType::class
     }
 
-    public function configureOption(OptionsResolver $resolver){
+    public function configureOptions(OptionsResolver $resolver){
 
+        $resolver->setDefaults([
+            "data_class" => "AppBundle\Entities\Employee"
+        ]);
     }
 }

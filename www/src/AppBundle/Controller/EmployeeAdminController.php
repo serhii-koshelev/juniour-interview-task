@@ -45,4 +45,25 @@ class EmployeeAdminController extends Controller
                 'addEmployeeForm' =>$form->createView()
             ]);
         }
+
+        /**
+         * @Route("/employee/{id}/edit", name="edit-employee")
+         */
+        public function renderEditEmployeeForm(Request $request, Employee $employee){
+
+            $form = $this->createForm(AddEmployee::class, $employee);
+            // only handles data on POST
+            $form->handleRequest($request);
+            if ($form->isSubmitted() && $form->isValid()) {
+                $genus = $form->getData();
+                $em = $this->getDoctrine()->getManager();
+                $em->persist($employee);
+                $em->flush();
+                $this->addFlash('success', 'Employee updated!');
+                return $this->redirectToRoute('employees');
+            }
+            return $this->render('admin/employee/edit.html.twig',[
+                'addEmployeeForm' =>$form->createView()
+            ]);
+        }
 }

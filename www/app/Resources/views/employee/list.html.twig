@@ -5,11 +5,15 @@
     <ul class="employees">
     {% for employee in employees %}
         <li class="employee">
-            <h3 class="employee-name">{{ employee.name }}</h3>
+            <h3 class="employee-name">{{ employee.name }} {{ employee.surname }}</h3>
             <div class="employee-info">
                 <span class="position">{{ employee.position }}</span>
-                <img src="{{ asset('img/"{{ employee.avatar }}"') }}" alt="">
+                <img src="{{ asset('img/ava.jpg') }}" height="250px" width="250px" alt="">
                 <span class="rate">{{ employee.rate }}</span>
+            </div>
+            <div class="employee-actions">
+                <span class="view-link"><a href="/employee/{{ employee.name }}-{{ employee.surname }}">View Profile</a></span>
+                <span class="edit-link"><a href="/employee/{{ employee.id }}/edit">Edit Profile</a></span>
             </div>
         </li>
         {% endfor %}

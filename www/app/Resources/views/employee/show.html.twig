@@ -1,6 +1,12 @@
 {% extends 'base.html.twig' %}
-{% block title %}Employee {{ name }}{% endblock %}
+{% block title %}Employee {{ employee.name }} {{ employee.surname }}{% endblock %}
 {% block body %}
-        <h1>Employee name : {{ name }}</h1>
+        <h3>Employee : {{ employee.name }} {{ employee.surname }}</h3>
+    <div class="employee-info">
+            <img src="{{ asset('img/ava.jpg') }}" height="250px" width="250px" alt="">
+            <span class="employee-position">Position: {{ employee.position }}</span>
+            <span class="employee-rate">Rate: {{ employee.rate }}</span>
+            <span class="work-from">Work form {{ employee.firstDay|date("d-m-Y") }}</span>
+    </div>
 {% endblock %}
 

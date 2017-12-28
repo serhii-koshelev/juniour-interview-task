@@ -41,6 +41,14 @@ class Employee
     private $avatarFileName;
 
     /**
+     * @return mixed
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
      * @ORM\Column(type="string", name="position")
      */
     private $position;

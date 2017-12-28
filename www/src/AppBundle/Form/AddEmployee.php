@@ -10,7 +10,7 @@ namespace AppBundle\Form;
 
 
 use AppBundle\Entities\Employee;
-use Doctrine\DBAL\Types\DateType;
+use \Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -25,7 +25,9 @@ class AddEmployee extends AbstractType
             ->add('surname')
             ->add('position')
             ->add('rate')
-            ->add('firstDay')
+            ->add('firstDay', DateType::class,[
+                'widget'=>'single_text'
+            ])
             ->getForm()//, DateType::class, [
             //'widget' => 'single_text'
         //])
